@@ -44,8 +44,8 @@ async function handleRequest(request) {
     .then(response => response.json())
     .catch(err => console.log(err));
 
-  //Set index to cookie if the cookie exists, otherwise to random integer either 0 or 1
-  let index = (cookie !== null) ? cookie : Math.floor(Math.random() * 2);
+  //Set index to cookie if the cookie is valid, otherwise to random integer either 0 or 1
+  let index = (cookie == 0 || cookie == 1) ? cookie : Math.floor(Math.random() * 2);
 
   //fetch one of two variants from the array of variant urls found earlier
   const res = await fetch(apiResponse.variants[index])
